@@ -56,6 +56,13 @@ def test_get_by_title(page: Page):
     expect(page.get_by_title("Save your changes")).to_be_visible()
     expect(page.get_by_title("Go to homepage")).to_be_visible()
 
+def test_get_by_test_id(page: Page):
+    page.goto("https://leogcarvalho.github.io/test-automation-practice/playwright-locators.html")
+
+    #get_by_test_id
+    expect(page.get_by_test_id("submit-button")).to_be_visible()
+    expect(page.get_by_test_id("status-message")).to_be_visible()
+
 """
 pytest --headed -k test_all_locators
 pytest --headed -k test_get_by_role
@@ -63,4 +70,6 @@ pytest --headed -k test_get_by_text
 pytest --headed -k test_get_by_label
 pytest --headed --slowmo 2000 -k test_get_by_alt_text
 pytest --headed --slowmo 2000
+pytest --headed --slowmo 2000 -k test_get_by_title
+pytest --headed --slowmo 2000 -k get_by_test_id
 """
