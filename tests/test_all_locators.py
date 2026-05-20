@@ -49,6 +49,13 @@ def test_get_by_alt_text(page: Page):
     expect(page.get_by_alt_text("python logo")).to_be_visible()
     expect(page.get_by_alt_text("javascript logo")).to_be_visible()
 
+def test_get_by_title(page: Page):
+    page.goto("https://leogcarvalho.github.io/test-automation-practice/playwright-locators.html")
+
+    #get_by_title
+    expect(page.get_by_title("Save your changes")).to_be_visible()
+    expect(page.get_by_title("Go to homepage")).to_be_visible()
+
 """
 pytest --headed -k test_all_locators
 pytest --headed -k test_get_by_role
