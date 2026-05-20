@@ -42,11 +42,18 @@ def test_get_by_placeholder(page: Page):
     page.get_by_placeholder("Enter your password").fill("123456")
     time.sleep(3)
 
-    # Parei em 1h29m do vídeo https://youtu.be/OJcnDJz57UY
+def test_get_by_alt_text(page: Page):
+    page.goto("https://leogcarvalho.github.io/test-automation-practice/playwright-locators.html")
+
+    #get_by_alt_text
+    expect(page.get_by_alt_text("python logo")).to_be_visible()
+    expect(page.get_by_alt_text("javascript logo")).to_be_visible()
 
 """
 pytest --headed -k test_all_locators
 pytest --headed -k test_get_by_role
 pytest --headed -k test_get_by_text
 pytest --headed -k test_get_by_label
+pytest --headed --slowmo 2000 -k test_get_by_alt_text
+pytest --headed --slowmo 2000
 """
