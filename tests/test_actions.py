@@ -21,8 +21,23 @@ def test_actions(page: Page) -> None:
     # page.get_by_text("Option B").check()
 
     # select_option
-    page.get_by_label("Choose an option:").select_option("Option 3")
-    page.get_by_label("Choose an option:").select_option(value="option2")
+    # page.get_by_label("Choose an option:").select_option("Option 3")
+    # page.get_by_label("Choose an option:").select_option(value="option2")
+
+    # click actions
+    page.get_by_text('Single Click').click()
+    expect(page.get_by_text('Single click button clicked successfully!')).to_be_visible()
+    page.get_by_text('Double Click').dblclick()
+    expect(page.get_by_text('Double click button clicked successfully!')).to_be_visible()
+    page.get_by_text('Right Click').click(button="right")
+    expect(page.get_by_text('Right click button clicked successfully!')).to_be_visible()
+    page.get_by_text('Shift + Click').click(modifiers=["Shift"])
+    expect(page.get_by_text('Shift + click button clicked successfully!')).to_be_visible()
+    page.get_by_text('Hover Menu').hover()
+    # page.locator('//*[@class="dropdown-content"]/*[text()="Option 1"]').click()
+    page.locator('.hover-menu a[href="#option1"]').click()
+    expect(page).to_have_url('https://leogcarvalho.github.io/test-automation-practice/#option1')
+    page.get_by_text('Single Click').click(position={'x': 0, 'y': 0})
 
 
 """
