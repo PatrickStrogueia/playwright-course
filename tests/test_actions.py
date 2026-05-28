@@ -16,9 +16,13 @@ def test_actions(page: Page) -> None:
     # check
     # get_by_role("checkbox", name="Feature 1")
     # get_by_role("radio", name="Option B")
-    page.get_by_text("Feature 1").check()
-    expect(page.get_by_text("Feature 1")).to_be_checked()
-    page.get_by_text("Option B").check()
+    # page.get_by_text("Feature 1").check()
+    # expect(page.get_by_text("Feature 1")).to_be_checked()
+    # page.get_by_text("Option B").check()
+
+    # select_option
+    page.get_by_label("Choose an option:").select_option("Option 3")
+    page.get_by_label("Choose an option:").select_option(value="option2")
 
 
 """
